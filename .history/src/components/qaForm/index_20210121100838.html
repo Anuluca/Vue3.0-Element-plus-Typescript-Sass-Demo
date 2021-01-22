@@ -1,0 +1,19 @@
+<div class="qa-form">
+    <el-form ref="showForm" :model="showForm">
+        <el-input
+          placeholder="请输入内容"
+          v-model="showForm.input"
+          class="input-with-select"
+          @keyup.enter.native="questionSearch"
+          clearable
+        >
+          <el-button
+            slot="append"
+            icon="el-icon-search"
+            @click="questionSearch"
+            clearable
+          ></el-button>
+        </el-input>
+
+      </el-form>
+</div>

@@ -1,0 +1,45 @@
+<!-- 题目搜索框开始 -->
+<div class="qa-model">
+  <el-tabs v-model="activeName" class="qaModel" @tab-click="removeCurRow()" >
+    <!-- 问题tab -->
+    <el-tab-pane label="选择问题" name="first">
+      <el-form ref="showForm" :model="showForm">
+        <el-input
+          placeholder="请输入内容"
+          v-model="showForm.input"
+          class="input-with-select"
+          @keyup.enter.native="questionSearch"
+          clearable
+        >
+          <el-button
+            slot="append"
+            icon="el-icon-search"
+            @click="questionSearch"
+            clearable
+          ></el-button>
+        </el-input>
+      </el-form>
+    </el-tab-pane>
+
+    <!-- 答复tab -->
+    <el-tab-pane label="选择答复" name="second" disabled>
+
+    </el-tab-pane>
+
+    <div>
+      <el-drawer
+        title="已选问答"
+        :visible.sync="resultChoseDrawer"
+        direction="rtl"
+        size="50%"
+        :append-to-body="true"
+        class="qaChoseDrawer"
+      >
+        <qaTable
+          :columns="selectTempList"
+          @sendData="deleteRow"
+        ></qaTable>
+      </el-drawer>
+    </div>
+  </el-tabs>
+</div>

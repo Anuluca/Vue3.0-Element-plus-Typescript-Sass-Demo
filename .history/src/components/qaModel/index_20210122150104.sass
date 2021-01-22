@@ -1,0 +1,91 @@
+.qa-model
+    padding: 10px 20px
+    position: relative
+    height: 100vh
+    .question-table
+        margin-top: 10px
+        overflow: scroll
+    .qa-bottom
+        width: 1060px
+        height: 54px
+        position: absolute
+        bottom: 0
+        > span
+            line-height: 58px
+            position: absolute
+            left: 3px
+            letter-spacing: 1px
+        .right-funcs
+            position: absolute
+            right: 0
+            margin-top: 12px
+        .el-link
+            margin-right: 10px
+    .answer-table
+        width: 1060px
+        height: calc(100vh - 209px)
+        margin-top: 10px
+        overflow: hidden
+        border-bottom: 2px solid #dcdfe6
+        .answer-index
+            width: 35px
+            float: left
+            .answer-index-row
+                width: 35px
+                height: 35px
+                line-height: 35px
+                text-align: center
+                border-left: 1px solid #d5d7d9
+                border-right: 1px solid #d5d7d9
+                cursor: pointer
+            .answer-index-after,.answer-index-before
+                width: 35px
+                height: 35px
+                line-height: 35px
+                text-align: center
+                border: 1px solid #d5d7d9
+                cursor: pointer
+            .answer-index-before
+                border-radius: 4px 4px 0 0
+                div
+                    width: 0
+                    height: 0
+                    border-left: 8px solid transparent
+                    border-right: 8px solid transparent
+                    border-bottom: 13px solid #e5e6eb
+                    margin-top: 10px
+                    margin-left: 10px
+            .answer-index-after
+                border-radius: 0 0 4px 4px
+                div
+                    width: 0
+                    height: 0
+                    border-left: 8px solid transparent
+                    border-right: 8px solid transparent
+                    border-top: 13px solid #e5e6eb
+                    margin-top: 12px
+                    margin-left: 10px
+        .answer-pdfs
+            width: 1015px
+            height: calc(100vh - 219px)
+            float: left
+            margin-left: 10px
+            overflow: scroll
+            .answer-column
+                width: 1000px
+                height: 500px
+                border: 1px solid #d5d7d9
+                border-radius: 4px
+                margin-bottom: 10px
+                text-align: center
+                position: relative
+                .choose_com
+                    left: 11px
+                    top: 8px
+                    width: 48px
+                    position: absolute
+                    text-align: center
+                    height: 100px
+                    border: 1px solid red
+                    .el-checkbox__input
+                            zoom: 270%

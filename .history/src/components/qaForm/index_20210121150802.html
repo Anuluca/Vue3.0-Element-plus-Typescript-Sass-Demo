@@ -1,0 +1,25 @@
+<div class="qa-form">
+  <el-form ref="showForm" :model="showForm">
+    <el-input
+      placeholder="请输入内容"
+      v-model="showForm.keyword"
+      @keyup.enter.native="search"
+      clearable
+    >
+      <template #prepend>
+        <el-select v-model="showForm.matchType">
+          <el-option label="精确搜索" value="precise"></el-option>
+          <el-option label="模糊搜索" value="fuzzy"></el-option>
+        </el-select>
+      </template>
+      <template #append>
+        <el-button icon="el-icon-search" @click="search"></el-button>
+      </template>
+    </el-input>
+    <el-select v-model="showForm.matchtype">
+      <el-option label="精确搜索" value="precise"></el-option>
+      <el-option label="模糊搜索" value="fuzzy"></el-option>
+    </el-select>
+    {{showForm.matchtype}}
+  </el-form>
+</div>

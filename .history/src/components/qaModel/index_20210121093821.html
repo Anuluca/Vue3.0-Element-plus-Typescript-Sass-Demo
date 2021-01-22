@@ -1,0 +1,70 @@
+<div class="qaTable">
+  <el-table :data="columns" :max-height="maxHeight" border>
+    <el-table-column type="index" width="70" label="序号"></el-table-column>
+
+    <el-table-column label="问答">
+      <template slot-scope="scope">
+        <el-tooltip :content="scope.row.value" placement="top">
+          <div>
+            <p>{{scope.row.question}}</p>
+            <p class="answer_text">{{scope.row.answer_text}}</p>
+          </div>
+        </el-tooltip>
+      </template>
+    </el-table-column>
+
+    <el-table-column label="操作" width="110" align="center">
+      <template slot-scope="scope">
+        <el-button type="text" size="small" @click="getQaPreview(scope.row)"
+          >查看</el-button
+        >
+        <el-button
+          @click.native.prevent="deleteRow(scope.$index,columns)"
+          v-if="ifRemove"
+          type="text"
+          size="small"
+        >
+          移除
+        </el-button>
+      </template>
+    </el-table-column>
+  </el-table>
+  <el-dialog
+    title="问答详情"
+    :visible.sync="qaDetailVisible"
+    class="preview-dialog qaDialog"
+    width="1000px"
+    append-to-body
+  >
+    <div class="chosedQADetail">
+      <div class="head">
+        <b>问题</b>
+        <el-tag v-for="(item,index) in nowRow.questionLabels" :key="index">
+          {{item}}
+        </el-tag>
+      </div>
+      <div class="content">
+        {{nowRow.question}}
+        <div class="head ans">
+          <b>答复</b>
+          <span v-if="nowRow.location_levels == []">
+            <el-tag v-for="(item,index) in nowRow.location_levels" :key="index">
+              {{item}}
+            </el-tag>
+          </span>
+          <span v-if="nowRow.report_time == []">
+            <el-tag v-for="(item,index) in nowRow.report_time" :key="index">
+              {{item}}
+            </el-tag>
+          </span>
+          <el-tag v-if="nowRow.value_phase">
+            {{nowRow.answer_phase}}
+          </el-tag>
+        </div>
+      </div>
+    </div>
+    <div class="content">
+      {{nowRow.answer_text}}
+    </div>
+  </el-dialog>
+</div>

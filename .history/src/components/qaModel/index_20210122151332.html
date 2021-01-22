@@ -1,0 +1,86 @@
+<!-- 题目搜索框开始 -->
+<div class="qa-model">
+  <el-tabs
+    v-model="activeName"
+    class="qaModel"
+    @tab-click="removeCurRow()"
+    height=""
+  >
+    <!-- 问题tab -->
+    <el-tab-pane label="选择问题" name="first">
+      <QaForm></QaForm>
+      <el-table
+        :data="questionData"
+        style="width: 100%"
+        :show-header="false"
+        class="question-table"
+        height="calc(100vh - 210px)"
+        @select="handleSelectionChange"
+      >
+        <el-table-column type="selection" width="45"> </el-table-column>
+        <el-table-column prop="value" label="问题">
+          <template #default="scope">
+            <el-tag size="small">问题</el-tag>
+            {{scope.row.value}}
+          </template>
+        </el-table-column>
+      </el-table>
+    </el-tab-pane>
+
+    <!-- 答复tab -->
+    <el-tab-pane label="选择答复" name="second" disabled>
+      <QaForm></QaForm>
+      <div class="answer-table">
+        <!-- 答复index -->
+        <div class="answer-index">
+          <div class="answer-index-before"><div></div></div>
+          <div
+            class="answer-index-row"
+            v-for="(item,index) in answerData"
+            :key="index"
+          >
+            {{item.index}}
+          </div>
+          <div class="answer-index-after"><div></div></div>
+        </div>
+        <!-- 答复pdf -->
+        <div class="answer-pdfs">
+          <div class="answer-column" v-for="(item,index) in answerData">
+            <div class="choose_com">
+              <el-checkbox :label="index" class="satton" size="medium">
+                <span></span>
+              </el-checkbox>
+              <div class="choose-text">点击选择</div>
+              <div
+                class="batton"
+              ></div>
+              <div class="stick-text">点击钉住</div>
+            </div>
+            123
+          </div>
+        </div>
+      </div>
+    </el-tab-pane>
+
+    <!-- 已选问答 -->
+    <div>
+      <el-drawer
+        title="已选问答"
+        :visible.sync="resultChoseDrawer"
+        direction="rtl"
+        size="50%"
+        :append-to-body="true"
+        class="qaChoseDrawer"
+      >
+        <qaTable :columns="selectTempList" @sendData="deleteRow"></qaTable>
+      </el-drawer>
+    </div>
+  </el-tabs>
+  <div class="qa-bottom">
+    <span>共{{questionData.length}}个问题</span>
+    <div class="right-funcs">
+      <el-link type="primary">查看已选问答</el-link>
+      <el-button type="primary" size="small">添加</el-button>
+    </div>
+  </div>
+</div>

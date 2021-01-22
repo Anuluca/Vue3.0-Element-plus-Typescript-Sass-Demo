@@ -1,0 +1,58 @@
+<div class="qa-form">
+  {{showForm}}
+  <el-form ref="showForm" :model="showForm">
+    <el-input
+      placeholder="请输入内容"
+      v-model="showForm.keyword.value"
+      @keyup.enter.native="search"
+      clearable
+    >
+      <template #prepend>
+        <el-select v-model="showForm.matchtype.value" placeholder="请输入">
+          <el-option label="精确搜索" value="precise"></el-option>
+          <el-option label="模糊搜索" value="fuzzy"></el-option>
+        </el-select>
+      </template>
+      <template #append>
+        <el-button icon="el-icon-search" @click="search"></el-button>
+      </template>
+    </el-input>
+    <div class="search-terms">
+      <el-select
+        v-model="showForm.phase"
+        placeholder="项目阶段"
+        size="small"
+        @change="questionSearch"
+        filterable
+        clearable
+      >
+        <el-option
+          v-for="item in qaPhase"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value"
+        >
+        </el-option>
+      </el-select>
+      <el-select
+        v-model="showForm.time"
+        placeholder="报告期"
+        size="small"
+        @change="questionSearch"
+        filterable
+        clearable
+      >
+        <el-option v-for="item in pickerOptions" :key="item" :value="item">
+        </el-option>
+      </el-select>
+      <el-switch
+        v-model="showForm.model"
+        active-text="问答模板"
+        @change="questionSearch"
+      ></el-switch>
+      <el-button @click="resetForm('showForm')" class="reset" size="small"
+        >重置</el-button
+      >
+    </div>
+  </el-form>
+</div>

@@ -1,0 +1,128 @@
+.qa-model
+    padding: 10px 20px
+    position: relative
+    height: 100vh
+    .question-table
+        margin-top: 10px
+        overflow: scroll
+    .qa-bottom
+        width: 1060px
+        height: 54px
+        position: absolute
+        bottom: 0
+        > span
+            line-height: 58px
+            position: absolute
+            left: 3px
+            letter-spacing: 1px
+        .right-funcs
+            position: absolute
+            right: 0
+            margin-top: 12px
+        .el-link
+            margin-right: 10px
+    .now-question
+        width: calc(100% - 14px)
+        margin-top: 14px
+        height: 41px
+        overflow: hidden
+        position: relative
+        a
+            position: absolute
+            left: 0
+            top: 0
+            bottom: 0
+            margin: auto
+
+    .answer-table
+        width: 1060px
+        height: calc(100vh - 266px)
+        margin-top: 10px
+        overflow: hidden
+        border-bottom: 2px solid #dcdfe6
+        .answer-index
+            width: 35px
+            float: left
+            overflow:hidden
+            .answer-index-row
+                width: 35px
+                height: 35px
+                line-height: 35px
+                text-align: center
+                border-left: 1px solid #d5d7d9
+                border-right: 1px solid #d5d7d9
+                cursor: pointer
+                transition: all 0.2s
+            .answer-index-row:hover
+                box-shadow: 0 0 7px 0px #d3d3d3
+            .answer-index-after,.answer-index-before
+                width: 35px
+                height: 35px
+                line-height: 35px
+                text-align: center
+                border: 1px solid #d5d7d9
+                cursor: pointer
+            .answer-index-before
+                border-radius: 4px 4px 0 0
+                div
+                    width: 0
+                    height: 0
+                    border-left: 8px solid transparent
+                    border-right: 8px solid transparent
+                    border-bottom: 13px solid #e5e6eb
+                    margin-top: 10px
+                    margin-left: 10px
+            .answer-index-after
+                border-radius: 0 0 4px 4px
+                div
+                    width: 0
+                    height: 0
+                    border-left: 8px solid transparent
+                    border-right: 8px solid transparent
+                    border-top: 13px solid #e5e6eb
+                    margin-top: 12px
+                    margin-left: 10px
+        .answer-pdfs
+            width: 1015px
+            height: calc(100vh - 266px)
+            float: left
+            margin-left: 10px
+            overflow: scroll
+            .answer-column
+                width: 1000px
+                height: 500px
+                border: 1px solid #d5d7d9
+                border-radius: 4px
+                margin-bottom: 10px
+                text-align: center
+                position: relative
+                .choose_com
+                    left: 15px
+                    top: 19px
+                    width: 48px
+                    position: absolute
+                    text-align: center
+                    height: 120px
+                    .el-checkbox__input
+                        zoom: 270%
+                        margin-left: 2px
+                    .choose-text
+                        font-size: 10px
+                        color: #acacac
+                    .batton
+                        border: 3px solid #dcdfe6
+                        width: 32px
+                        height: 32px
+                        background-color: #ffffff
+                        margin-top: 11px
+                        margin-bottom: 4px
+                        background-image: url(/img/stick-on.81fa29cb.png)
+                        border-radius: 4px
+                        background-position: center
+                        background-repeat: no-repeat
+                        background-size: 18px 18px
+                        margin-left: 5px
+                        transition: all 0.2s
+                    .stick-text
+                        font-size: 10px
+                        color: #acacac

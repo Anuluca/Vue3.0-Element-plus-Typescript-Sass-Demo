@@ -1,0 +1,27 @@
+<!-- 题目搜索框开始 -->
+<div style="height: 100%;">
+  <el-tabs v-model="activeName" class="qaModel" @tab-click="removeCurRow()" >
+    <!-- 问题tab -->
+    <el-tab-pane label="选择问题" name="first">
+    </el-tab-pane>
+
+    <!-- 答复tab -->
+    <el-tab-pane label="选择答复" name="second" disabled>
+
+    </el-tab-pane>
+
+    <div>
+      <el-drawer
+        :visible.sync="resultChoseDrawer"
+        :append-to-body="true"
+        class="qaChoseDrawer"
+        :with-header="false"
+      >
+        <qaTable
+          :columns="selectTempList"
+          @sendData="deleteRow"
+        ></qaTable>
+      </el-drawer>
+    </div>
+  </el-tabs>
+</div>
