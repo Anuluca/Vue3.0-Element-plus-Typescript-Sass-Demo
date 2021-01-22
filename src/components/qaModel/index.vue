@@ -17,8 +17,13 @@ export default defineComponent({
       answerData: answerData,
       ifClickedRow: -1,
 
-      handleSelectionChange: (selection: any) => {
+      selectQuestion: (selection: any, row: any) => {
+        console.log("我在这里", selection, row);
         data.activeName = "second";
+      },
+      selectQuestionRow: (column: any) => {
+        console.log("当前点击的是整行");
+        data.selectQuestion([], column);
       },
       backToQuestion: () => {
         data.activeName = "first";

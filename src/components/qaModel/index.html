@@ -15,13 +15,14 @@
         :show-header="false"
         class="question-table"
         height="calc(100vh - 210px)"
-        @select="handleSelectionChange"
+        @select="selectQuestion"
+        @row-click="selectQuestionRow"
       >
         <el-table-column type="selection" width="45"> </el-table-column>
         <el-table-column prop="value" label="问题">
           <template #default="scope">
             <el-tag size="small">问题</el-tag>
-            {{scope.row.value}}
+            <span class="question-text" @click.stop="">{{scope.row.value}}</span>
           </template>
         </el-table-column>
       </el-table>
@@ -49,7 +50,7 @@
           <div class="answer-index-before"><div></div></div>
           <div
             class="answer-index-row"
-            :class = "{'answer-index-row__clicked':index == ifClickedRow}"
+            :class="{'answer-index-row__clicked':index == ifClickedRow}"
             v-for="(item,index) in answerData"
             :key="index"
             @click="jumpToAnswer(index)"
@@ -89,7 +90,16 @@
     </div>
   </el-tabs>
   <div class="qa-bottom">
-    <span>共{{questionData.length}}个问题</span>
+    <span v-if="activeName == 'first'"
+      >共
+      <font color="#1b9ffc">{{questionData.length}}</font>
+      个问题</span
+    >
+    <span v-else-if="activeName == 'second'"
+      >共
+      <font color="#1b9ffc">{{answerData.length}}</font>
+      个答复</span
+    >
     <div class="right-funcs">
       <el-link type="primary">查看已选问答</el-link>
       <el-button type="primary" size="small">添加</el-button>
