@@ -2,7 +2,7 @@
 <script lang="ts">
 import { defineComponent, reactive, ref, toRefs } from "vue";
 import QaForm from "@/components/qaForm/index.vue";
-import { questionData,answerData } from "./mock";
+import { questionData, answerData } from "./mock";
 
 export default defineComponent({
   name: "qaModel",
@@ -10,20 +10,29 @@ export default defineComponent({
     QaForm,
   },
   setup() {
+    const answerTable = ref(null);
     const data = reactive({
       activeName: "first",
       questionData: questionData,
       answerData: answerData,
+      ifClickedRow: -1,
 
-      handleSelectionChange: () => {
-        data.activeName="second"
+      handleSelectionChange: (selection: any) => {
+        data.activeName = "second";
       },
-      backToQuestion:() => {
-        data.activeName="first"
-      }
+      backToQuestion: () => {
+        data.activeName = "first";
+      },
+      jumpToAnswer: (index: any) => {
+        data.ifClickedRow = index;
+        setTimeout(() => {
+          (answerTable.value as any).scrollTop = 512 * index;
+        }, 0);
+      },
     });
 
     return {
+      answerTable,
       ...toRefs(data),
     };
   },

@@ -5,6 +5,7 @@
     .question-table
         margin-top: 10px
         overflow: scroll
+        border-bottom: 2px solid #dcdfe6
     .qa-bottom
         width: 1060px
         height: 54px
@@ -43,7 +44,6 @@
         .answer-index
             width: 35px
             float: left
-            overflow:hidden
             .answer-index-row
                 width: 35px
                 height: 35px
@@ -53,7 +53,10 @@
                 border-right: 1px solid #d5d7d9
                 cursor: pointer
                 transition: all 0.1s
-                
+            .answer-index-row__clicked
+                background-color: #208bf3
+                color: white
+                font-weight: bold
             .answer-index-row:hover
                 box-shadow: 0 0 19px 0px #e1e1e1
             .answer-index-after,.answer-index-before
@@ -89,6 +92,7 @@
             float: left
             margin-left: 10px
             overflow: scroll
+            scroll-behavior: smooth
             .answer-column
                 width: 1000px
                 height: 500px

@@ -31,7 +31,12 @@
     <el-tab-pane label="选择答复" name="second" disabled>
       <QaForm></QaForm>
       <div class="now-question">
-        <el-link icon="el-icon-back" :underline="false" @click="backToQuestion" href="#">
+        <el-link
+          icon="el-icon-back"
+          :underline="false"
+          @click="backToQuestion"
+          href="#"
+        >
           <el-tag size="small">
             问题
           </el-tag>
@@ -44,15 +49,17 @@
           <div class="answer-index-before"><div></div></div>
           <div
             class="answer-index-row"
+            :class = "{'answer-index-row__clicked':index == ifClickedRow}"
             v-for="(item,index) in answerData"
             :key="index"
+            @click="jumpToAnswer(index)"
           >
             {{item.index}}
           </div>
           <div class="answer-index-after"><div></div></div>
         </div>
         <!-- 答复pdf -->
-        <div class="answer-pdfs">
+        <div class="answer-pdfs" ref="answerTable">
           <div class="answer-column" v-for="(item,index) in answerData">
             <div class="choose_com">
               <el-checkbox :label="index" class="satton" size="medium">
